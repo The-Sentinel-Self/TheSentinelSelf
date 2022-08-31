@@ -59,7 +59,7 @@ public class PathogenManager : MonoBehaviour
     public struct GPUData
     {
         public float age;
-        public int connections;
+        public float connections;
         public int played;
         public float speed;
         public float phase;
@@ -123,6 +123,7 @@ public class PathogenManager : MonoBehaviour
         Vector3 pos = transform.position + UnityEngine.Random.insideUnitSphere * spawnArea;
 
         // instantiate a new sentinel as child and at pos
+
         GameObject thisSentinel = Instantiate(sentinel, pos, Quaternion.identity, this.transform);
 
         // get its kurmto component
@@ -145,7 +146,7 @@ public class PathogenManager : MonoBehaviour
         for (int l = 0; l < duplications; l++)
         {
             // instantiate a new sentinel as child and at pos
-            GameObject thisSentinel = Instantiate(pathogen, pathogen.transform.position, Quaternion.identity, this.transform);
+            GameObject thisSentinel = Instantiate(pathogen, pathogen.transform.position, pathogen.transform.rotation, this.transform);
 
             // get its kurmto component
             KuramotoAffectedAgent kuramoto = thisSentinel.GetComponent<KuramotoAffectedAgent>();
@@ -178,9 +179,7 @@ public class PathogenManager : MonoBehaviour
         // loop over the n sentinels
         for (int i = 0; i < RealNumPathogens; i++)
         {
-            if (sentinels[i] == null) { 
-                Debug.Log(i); 
-            }
+            
             // get the kurmto
             KuramotoAffectedAgent kuramoto = sentinels[i].GetComponent<KuramotoAffectedAgent>();
             
@@ -208,7 +207,8 @@ public class PathogenManager : MonoBehaviour
                 kuramoto.phase = GPUStruct[i].phase;
                 kuramoto.Connections = GPUStruct[i].connections;
                 kuramoto.played = GPUStruct[i].played;
-                sentinels[i].GetComponent<Rigidbody>().AddForceAtPosition( GPUStruct[i].vel* Time.deltaTime * speedScl, sentinels[i].transform.position + sentinels[i].transform.up);
+                float sinSpdScl = Mathf.Sin(Mathf.Deg2Rad * (kuramoto.phase * 360)) * speedScl;
+                sentinels[i].GetComponent<Rigidbody>().AddForceAtPosition( GPUStruct[i].vel * sinSpdScl, sentinels[i].transform.position - sentinels[i].transform.up);
                 
                 GPUStruct[i].pos = sentinels[i].transform.position;
 
