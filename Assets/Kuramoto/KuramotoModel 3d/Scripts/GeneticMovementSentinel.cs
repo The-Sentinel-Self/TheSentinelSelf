@@ -170,7 +170,7 @@ public class GeneticMovementSentinel : MonoBehaviour
                 tcellHits = 0;
                 if (debugging)
                 {
-                    Debug.Log("Leaving");
+                    Debug.Log("Leaving to find tcells");
                 }
             }
             else if( keys< NumKeysToCollect)
@@ -208,7 +208,10 @@ public class GeneticMovementSentinel : MonoBehaviour
             
             keys = 0;
 
-
+            if (debugging)
+            {
+                Debug.Log("Leaving to find pathogens");
+            }
         }
         
     }

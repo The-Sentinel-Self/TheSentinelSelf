@@ -151,6 +151,7 @@ public class GeneticMovementTcell : MonoBehaviour
                             replica.GetComponent<GeneticMovementTcell>().target = target;
                             // add new tcell to manager
                             manager.AddTCell(replica);
+                            
                         }
                     }
                 }
@@ -158,7 +159,7 @@ public class GeneticMovementTcell : MonoBehaviour
 
 
         }
-        else if (collision.gameObject.tag == "Lymphonde")
+        else if (collision.gameObject.tag == "Pathogen") // pathogen
         {
             // get keys from children
             GeneticAntigenKey[] Antigens = collision.gameObject.GetComponentsInChildren<GeneticAntigenKey>();
@@ -178,6 +179,7 @@ public class GeneticMovementTcell : MonoBehaviour
                         // add fitness
                         Antigens[i - 1].antigen.fitness++;
                         collision.gameObject.GetComponent<KuramotoAffectedAgent>().dead = true;
+                        //kills a pathogen
                     }
                 }
             }
@@ -289,5 +291,5 @@ public class GeneticMovementTcell : MonoBehaviour
         return  keys;
     }
 
- 
+
 }

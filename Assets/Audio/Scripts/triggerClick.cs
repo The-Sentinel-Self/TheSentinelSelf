@@ -39,6 +39,7 @@ public class triggerClick : MonoBehaviour
         // condition based on agent phase compared to threshold
         if (kuramotoAffectedAgent.phase > randThreshold && isPlaying == false)
         {
+    
             // set pitch of the sample equal to a scaled (0-1) value of the agent's bpm (Pathogen Emitter manager sets this range = 90-100)
             audioSource.pitch = 1 + Mathfs.Remap(90f, 100f, 0f, 1f, kuramotoAffectedAgent.speedBPM);
             audioSource.Play();           

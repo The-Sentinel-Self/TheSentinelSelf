@@ -98,7 +98,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Phase: 1.91
-    - Vector1_556b9eb6480c47debe0aee32d37e9dae: 0.0002
+    - Vector1_556b9eb6480c47debe0aee32d37e9dae: 0.002
     - Vector1_693be5642cf148e0aaf395419d46810b: -78.8
     - Vector1_fbdf56743d834f6ab5cfd032222871e4: 0.001
     - _AlphaClip: 0

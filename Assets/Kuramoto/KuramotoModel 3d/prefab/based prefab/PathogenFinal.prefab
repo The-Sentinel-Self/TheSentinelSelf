@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: -2629601526590107559}
   m_Layer: 0
   m_Name: PathogenFinal
-  m_TagString: Lymphonde
+  m_TagString: Pathogen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
